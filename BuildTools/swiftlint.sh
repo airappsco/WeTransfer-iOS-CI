@@ -45,7 +45,7 @@ if [ -z "$CI" ]; then
 
     if (( $count > 0 )); then
         echo "Found ${count} lintable files! Linting..."
-        xcrun --sdk macosx mint run -m $MINT_FILE_PATH $SWIFT_LINT lint --use-script-input-files --config "../../../.swiftlint.yml" --force-exclude || true;
+        xcrun --sdk macosx mint run -m $MINT_FILE_PATH $SWIFT_LINT lint --use-script-input-files --config "$BASEDIR/.swiftlint.yml" --force-exclude || true;
     else
         echo "No files to lint, the number of files found is $count"
         exit 0
