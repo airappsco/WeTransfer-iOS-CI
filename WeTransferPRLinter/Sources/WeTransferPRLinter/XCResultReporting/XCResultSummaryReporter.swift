@@ -10,6 +10,7 @@ public protocol XCResultSummaryReporting {
         for files: [XCResultSummaryContaining],
         using danger: DangerDSL,
         fileManager: FileManager,
+        minimumCoverage: Double,
         resultsFilter: ResultsFilter?
     )
 }
@@ -20,6 +21,7 @@ public enum XCResultSummaryReporter: XCResultSummaryReporting {
         for files: [XCResultSummaryContaining],
         using danger: DangerDSL,
         fileManager: FileManager = .default,
+        minimumCoverage: Double,
         resultsFilter: ResultsFilter? = nil
     ) {
         let resultFiles = files.map { file in
@@ -35,6 +37,6 @@ public enum XCResultSummaryReporter: XCResultSummaryReporting {
             danger.report(result)
         }
 
-        XCResultCoverageReporter(resultFiles: resultFiles, danger: danger).report(minimumCoverage: 0.8)
+        XCResultCoverageReporter(resultFiles: resultFiles, danger: danger).report(minimumCoverage: minimumCoverage)
     }
 }

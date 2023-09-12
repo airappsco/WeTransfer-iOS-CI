@@ -220,6 +220,7 @@ final class WeTransferLinterTests: XCTestCase {
             summaryReporter: XCResultSummaryReporter.self,
             reportsPath: "file://faky/url",
             fileManager: .default,
+            minimumCoverage: 0.8,
             environmentVariables: [:]
         )
 

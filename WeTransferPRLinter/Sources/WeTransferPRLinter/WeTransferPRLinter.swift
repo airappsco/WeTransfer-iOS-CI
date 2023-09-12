@@ -5,6 +5,18 @@ import Foundation
 // danger:disable unowned_self
 
 public enum WeTransferPRLinter {
+    
+    private static func getMinimumCoverage(environmentVariables: [String: String]) -> Double {
+        let defaultCoverage = 0.8
+        guard let raw = environmentVariables["MINIMUM_COVERAGE"] else {
+            return defaultCoverage
+        }
+        guard let minimumCoverage = Double(raw) else {
+            return defaultCoverage
+        }
+        return minimumCoverage / 100// as is passed as percentage
+    }
+    
     public static func lint(
         using danger: DangerDSL = Danger(),
         swiftLintExecutor: SwiftLintExecuting.Type = SwiftLintExecutor.self,
@@ -15,13 +27,16 @@ public enum WeTransferPRLinter {
         environmentVariables: [String: String] = ProcessInfo.processInfo.environment
     ) {
         let skippedTests = environmentVariables["SKIP_TESTS"]?.lowercased() == "true"
-
+        
+        let minimumCoverage = getMinimumCoverage(environmentVariables: environmentVariables)
+        
         measure(taskName: "XCResults Summary", skipIf: skippedTests, danger: danger) {
             reportXCResultsSummary(
                 using: danger,
                 summaryReporter: xcResultSummaryReporter,
                 reportsPath: reportsPath,
                 fileManager: fileManager,
+                minimumCoverage: minimumCoverage,
                 environmentVariables: environmentVariables
             )
         }
@@ -73,6 +88,7 @@ public enum WeTransferPRLinter {
         summaryReporter: XCResultSummaryReporting.Type,
         reportsPath: String,
         fileManager: FileManager,
+        minimumCoverage: Double,
         environmentVariables: [String: String]
     ) {
         defer { print("\n") }
@@ -95,7 +111,7 @@ public enum WeTransferPRLinter {
             ".spm-build/"
         ]
 
-        summaryReporter.reportXCResultSummary(for: xcResultFiles, using: danger, fileManager: fileManager) { result in
+        summaryReporter.reportXCResultSummary(for: xcResultFiles, using: danger, fileManager: fileManager, minimumCoverage: minimumCoverage) { result in
             guard let file = result.file else {
                 return true
             }
