@@ -2,6 +2,7 @@ excluded:
 - Carthage
 - Pods
 - SwiftLint/Common/3rdPartyLib
+- ../../../Package.swift
 
 analyzer_rules:
   - explicit_self
@@ -9,12 +10,11 @@ analyzer_rules:
 disabled_rules:
   - todo
   - multiline_arguments_brackets
-  - trailing_whitespace
   - vertical_whitespace_opening_braces
   - trailing_closure
-  - conditional_returns_on_newline
 
 opt_in_rules:
+  - file_header
   - empty_count
   - anyobject_protocol
   - array_init
@@ -65,6 +65,17 @@ opt_in_rules:
   - vertical_parameter_alignment_on_call
   - vertical_whitespace_closing_braces
   - yoda_condition
+  - conditional_returns_on_newline
+  
+file_header:
+  required_pattern: |
+    /\/\
+    /\/\  .*?\.swift
+    /\/\  .*?
+    /\/\
+    /\/\  (Created by .*? on .*?)
+    /\/\  Copyright ©\d{4} AirApps. All rights reserved.
+    /\/\
 
 cyclomatic_complexity:
   ignores_case_statements: true
