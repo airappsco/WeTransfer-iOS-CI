@@ -20,26 +20,11 @@ if [ -z "$CI" ]; then
 
     printf "\nExecuting SwiftLint from ${execution_directory}\n"
 
-    # Unstaged files
     while read filename; do
-        export SCRIPT_INPUT_FILE_$count="${filename}"
-        echo "Found '${filename}'"
-        count=$((count + 1))
-    done < <(git diff --relative --name-only $SRCROOT | grep ".swift$")
-
-    # Staged files
-    while read filename; do
-        export SCRIPT_INPUT_FILE_$count="${filename}"
-        echo "Found '${filename}'"
-        count=$((count + 1))
-    done < <(git diff --relative --diff-filter=d --cached --name-only $SRCROOT | grep ".swift$")
-
-    # Committed files
-    while read filename; do
-        export SCRIPT_INPUT_FILE_$count="${filename}"
-        echo "Found '${filename}'"
-        count=$((count + 1))
-    done < <(git diff develop... --relative --diff-filter=d --name-only $SRCROOT | grep ".swift$")
+    export SCRIPT_INPUT_FILE_$count="${filename}"
+    echo "Found '${filename}'"
+    count=$((count + 1))
+    done < <(find . -type f -name "*.swift" -not -path "./Submodules/*")
 
     export SCRIPT_INPUT_FILE_COUNT=$count
 
