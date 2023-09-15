@@ -74,7 +74,7 @@ file_header:
     /\/\  .*?
     /\/\
     /\/\  (Created by .*? on .*?)
-    /\/\  Copyright ©\d{4} AirApps. All rights reserved.
+    /\/\  Copyright © \d{4} AirApps. All rights reserved.
     /\/\
 
 cyclomatic_complexity:
