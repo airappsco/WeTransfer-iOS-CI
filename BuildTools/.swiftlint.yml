@@ -73,8 +73,8 @@ file_header:
     /\/\  .*?\.swift
     /\/\  .*?
     /\/\
-    /\/\  (Created by .*? on .*?)
-    /\/\  Copyright © \d{4} AirApps. All rights reserved.
+    /\/\  Created by .*? on \d{2}/\d{2}/20\d{2}.
+    /\/\  Copyright © 20\d{2} Air Apps. All rights reserved.
     /\/\
 
 cyclomatic_complexity:
