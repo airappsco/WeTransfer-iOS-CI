@@ -28,6 +28,8 @@ lane :test_project do |options|
   ENV['FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT'] = '30'
   ENV['FASTLANE_XCODE_LIST_TIMEOUT'] = '30'
 
+  sh("echo something")
+
   begin
     if options[:destination].nil?
       device = options[:device] || 'iPhone 14'
