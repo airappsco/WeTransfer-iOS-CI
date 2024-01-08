@@ -57,8 +57,8 @@ lane :test_project do |options|
 
     debug_derived_data_folder ="#{ENV['PWD']}/build/derived_data"
 
-    sh("echo ===============")
-    sh("debug_derived_data_folder = #{debug_derived_data_folder}")
+    # sh("echo ===============")
+    # sh("debug_derived_data_folder = #{debug_derived_data_folder}")
     sh("echo ===============")
     sh("ls -a ~/Library/Developer/Xcode/DerivedData")
     sh("echo ===============")
