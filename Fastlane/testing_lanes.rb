@@ -48,7 +48,8 @@ lane :test_project do |options|
     sh("ls -a")
     sh("echo something")
     # Remove any leftover reports before running so local runs won't fail due to an existing file.
-    sh("rm -rf #{ENV['PWD']}/build/reports/#{scheme}.xcresult")
+    #sh("rm -rf #{ENV['PWD']}/build/reports/#{scheme}.xcresult")
+    sh("rm -rf #{ENV['PWD']}/build/reports/fake-scheme.xcresult")
 
     code_coverage_enabled = true
 
