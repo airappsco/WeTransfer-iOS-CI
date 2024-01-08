@@ -28,8 +28,6 @@ lane :test_project do |options|
   ENV['FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT'] = '30'
   ENV['FASTLANE_XCODE_LIST_TIMEOUT'] = '30'
 
-  sh("echo something")
-
   begin
     if options[:destination].nil?
       device = options[:device] || 'iPhone 14'
@@ -47,6 +45,7 @@ lane :test_project do |options|
     #   service_name: scheme
     # )
 
+    sh("echo something")
     # Remove any leftover reports before running so local runs won't fail due to an existing file.
     sh("rm -rf #{ENV['PWD']}/build/reports/#{scheme}.xcresult")
 
