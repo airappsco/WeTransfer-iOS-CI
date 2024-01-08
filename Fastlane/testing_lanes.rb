@@ -51,7 +51,7 @@ lane :test_project do |options|
     sh("rm -rf #{ENV['PWD']}/build/reports/#{scheme}.xcresult")
 
     sh("echo ===============")
-    sh("ls -a /Users/vagrant/git/build/derived_data/")
+    # sh("ls -a /Users/vagrant/git/build/derived_data/")
     # sh("rm -rf /Users/vagrant/git/build/derived_data/")
 
 
