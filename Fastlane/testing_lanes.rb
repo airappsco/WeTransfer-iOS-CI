@@ -50,8 +50,8 @@ lane :test_project do |options|
     # Remove any leftover reports before running so local runs won't fail due to an existing file.
     sh("rm -rf #{ENV['PWD']}/build/reports/#{scheme}.xcresult")
 
-    sh("ls -a /Users/vagrant/git/build/derived_data/")
-    sh("rm -rf /Users/vagrant/git/build/derived_data/")
+    # sh("ls -a /Users/vagrant/git/build/derived_data/")
+    # sh("rm -rf /Users/vagrant/git/build/derived_data/")
 
     code_coverage_enabled = true
 
@@ -84,7 +84,7 @@ lane :test_project do |options|
       package_path: options[:package_path], # Optional path to the SPM package to test.
       build_for_testing: options.fetch(:build_for_testing, nil),
       test_without_building: options.fetch(:test_without_building, nil),
-      disable_package_automatic_updates: true, # Makes xcodebuild -showBuildSettings more reliable too.
+      disable_package_automatic_updates: false # true, # Makes xcodebuild -showBuildSettings more reliable too.
       skip_package_dependencies_resolution: options.fetch(:disable_automatic_package_resolution, false)
     )
   rescue StandardError => e
