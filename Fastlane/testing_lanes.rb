@@ -45,6 +45,7 @@ lane :test_project do |options|
     #   service_name: scheme
     # )
 
+    sh("ls -a")
     sh("echo something")
     # Remove any leftover reports before running so local runs won't fail due to an existing file.
     sh("rm -rf #{ENV['PWD']}/build/reports/#{scheme}.xcresult")
