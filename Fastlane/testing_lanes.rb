@@ -50,9 +50,17 @@ lane :test_project do |options|
     # Remove any leftover reports before running so local runs won't fail due to an existing file.
     sh("rm -rf #{ENV['PWD']}/build/reports/#{scheme}.xcresult")
 
-    # sh("ls -a /Users/vagrant/git/build/derived_data/")
+    sh("echo ===============")
+    sh("ls -a /Users/vagrant/git/build/derived_data/")
     # sh("rm -rf /Users/vagrant/git/build/derived_data/")
 
+
+    debug_derived_data_folder ="#{ENV['PWD']}/build/derived_data"
+
+    sh("echo ===============")
+    sh("debug_derived_data_folder = #{debug_derived_data_folder}")
+    sh("echo ===============")
+    sh("ls -a ~/Library/Developer/Xcode/DerivedData")
     sh("echo ===============")
     sh("ls -a /Users/vagrant/")
     sh("echo ===============")
