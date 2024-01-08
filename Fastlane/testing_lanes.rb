@@ -59,8 +59,8 @@ lane :test_project do |options|
 
     # sh("echo ===============")
     # sh("debug_derived_data_folder = #{debug_derived_data_folder}")
-    sh("echo ===============")
-    sh("ls -a ~/Library/Developer/Xcode/DerivedData")
+    # sh("echo ===============")
+    # sh("ls -a ~/Library/Developer/Xcode/DerivedData")
     sh("echo ===============")
     sh("ls -a /Users/vagrant/")
     sh("echo ===============")
