@@ -46,10 +46,12 @@ lane :test_project do |options|
     # )
 
     sh("ls -a")
-    sh("echo something")
+    
     # Remove any leftover reports before running so local runs won't fail due to an existing file.
-    #sh("rm -rf #{ENV['PWD']}/build/reports/#{scheme}.xcresult")
-    sh("rm -rf #{ENV['PWD']}/build/reports/fake-scheme.xcresult")
+    sh("rm -rf #{ENV['PWD']}/build/reports/#{scheme}.xcresult")
+
+    sh("ls -a /Users/vagrant/git/build/derived_data/")
+    sh("rm -rf /Users/vagrant/git/build/derived_data/")
 
     code_coverage_enabled = true
 
