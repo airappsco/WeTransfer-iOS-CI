@@ -70,6 +70,11 @@ lane :test_project do |options|
     sh("echo ===============")
     sh("ls -a /Users/vagrant/git/.spm-build/repositories/")
     sh("echo ===============")
+    sh("ls -a /Users/vagrant/git/.spm-build/checkouts/")
+    sh("echo ===============")
+    sh("ls -a /Users/vagrant/git/.spm-build/artifacts/")
+    sh("echo ===============")
+    sh("rm -rf /Users/vagrant/git/.spm-build/")
 
     code_coverage_enabled = true
 
